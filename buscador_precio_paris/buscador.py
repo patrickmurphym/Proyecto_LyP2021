@@ -21,35 +21,34 @@ for i in range(len(elem_nombre)):
     nombre = elem_nombre[i].text
     Objeto_telefono = telefono.Telefono(nombre,"Na", "Na", "Na")
     telefonos.append(Objeto_telefono)
-    ##### de aqui para abajo no esta funcionando bien
+    
     try:
-        precio_tienda = elem_precios[i].find_element_by_class_name("item-price price-normal")
-        telefonos[i].precio_tienda = precio_tienda.text
+        elem_precio_tienda = elem_precios[i].find_element_by_class_name("item-price.price-normal")
+        telefonos[i].precio_tienda = elem_precio_tienda.text
     except:
         pass
 
     try:
-        precio_internet = elem_precios[i].find_element_by_class_name("price-label-short")
+        precio_internet = elem_precios[i].find_element_by_class_name("price-internet")
         telefonos[i].precio_internet = precio_internet.text
     except:
         pass
     try:
-        precio_tarjeta = elem_precios[i].find_element_by_class_name("col-md-9 col-xs-9 item-price offer-price price-tc cencosud-price")
+        precio_internet = elem_precios[i].find_element_by_class_name("col-md-9.col-xs-9.item-price.offer-price.price-tc.default-price")
+        telefonos[i].precio_internet = precio_internet.text
+    except:
+        pass
+
+    try:
+        precio_tarjeta = elem_precios[i].find_element_by_class_name("col-md-9.col-xs-9.item-price.offer-price.price-tc.cencosud-price")
         telefonos[i].precio_tarjeta = precio_tarjeta.text
     except:
         pass
+    
     print(telefonos[i].nombre)
     print(telefonos[i].precio_tienda)
     print(telefonos[i].precio_internet)
     print(telefonos[i].precio_tarjeta)
     print("----------------------------------")
 
-    
-#elem es un objeto que contiene las propiedades de la clase llamada 'product-price'
-# elem = driver.find_element_by_xpath("//div[@id='testId-pod-prices-7183779'") #este es distinto para cada retail
-# precio = elem.text
-# print(precio)
-# print("esto no prendio cabros")
-
-## preguntar por ayuda para encontrar el precio en falabella
 driver.close()
