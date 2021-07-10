@@ -1,6 +1,8 @@
 from selenium import webdriver
 import Methods as mt
-
+import pandas as pd
+import Funciones
+import os
 
 class Product(object):
     def __init__(self, name, storePrice, internetPrice, cardPrice, page):
@@ -172,5 +174,49 @@ def main():
     mt.Methods().csvOut(phones)
 
 
+def printMenu():
+    """
+    Función que limpia la pantalla y muestra nuevamente el menu
+    """
+    os.system('clear') # NOTA para windows tienes que cambiar clear por cls
+
+    print("¿Qué desea hacer?")
+    print("\t 1. Precio mínimo de Paris.")
+    print("\t 2. Precio mínimo de Ripley.")
+    print("\t 3. Precio mínimo de Linio.")
+    print("\t 4. Precio promedio entre las tiendas.")
+    print("\t13. Salir")
+
+def menu():
+    df = pd.read_csv("data.csv")
+
+    while True:
+        # Mostramos el menu
+        printMenu()
+    
+        # Solicituamos una opción al usuario
+        opcion = int(input("Ingrese su opción: "))
+
+        if opcion == 1:
+            print("")
+            Funciones.minPrice(df, 'Paris')
+            print("")
+            input("Pulsa ENTER para continuar")
+        elif opcion == 2:
+            print("")
+            Funciones.minPrice(df, 'Ripley')
+            print("")
+            input("Pulsa ENTER para continuar")
+        elif opcion == 3:
+            print("")
+            input("Pulsa ENTER para continuar")
+        elif opcion == 13:
+            break
+        else:
+            print("")
+            input("No has pulsado ninguna opción correcta...\npulsa ENTER para continuar")
+
+
 if __name__ == '__main__':
-    main()
+    #main()
+    menu()
