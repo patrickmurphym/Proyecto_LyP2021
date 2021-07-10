@@ -184,7 +184,9 @@ def printMenu():
     print("\t 1. Precio mínimo de Paris.")
     print("\t 2. Precio mínimo de Ripley.")
     print("\t 3. Precio mínimo de Linio.")
-    print("\t 4. Precio promedio entre las tiendas.")
+    print("\t 4. Precio máximo de Paris.")
+    print("\t 5. Precio máximo de Ripley.")
+    print("\t 6. Precio máximo de Linio.")
     print("\t13. Salir")
 
 def menu():
@@ -200,21 +202,29 @@ def menu():
         if opcion == 1:
             print("")
             Funciones.minPrice(df, 'Paris')
-            print("")
-            input("Pulsa ENTER para continuar")
         elif opcion == 2:
             print("")
             Funciones.minPrice(df, 'Ripley')
-            print("")
-            input("Pulsa ENTER para continuar")
         elif opcion == 3:
             print("")
-            input("Pulsa ENTER para continuar")
+            Funciones.minPrice(df, 'Linio')
+        elif opcion == 4:
+            print("")
+            Funciones.maxPrice(df, 'Paris')
+        elif opcion == 5:
+            print("")
+            Funciones.maxPrice(df, 'Ripley')
+        elif opcion == 6:
+            print("")
+            Funciones.maxPrice(df, 'Linio')
         elif opcion == 13:
             break
         else:
             print("")
-            input("No has pulsado ninguna opción correcta...\npulsa ENTER para continuar")
+            print("No has pulsado ninguna opción correcta...")
+        
+        print("")
+        input("Pulsa ENTER para continuar")
 
 
 if __name__ == '__main__':
