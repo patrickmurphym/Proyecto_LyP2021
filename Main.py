@@ -181,16 +181,14 @@ def printMenu():
     os.system('clear') # NOTA para windows tienes que cambiar clear por cls
 
     print("¿Qué desea hacer?")
-    print("\t 1. Precio mínimo de Paris.")
-    print("\t 2. Precio mínimo de Ripley.")
-    print("\t 3. Precio mínimo de Linio.")
-    print("\t 4. Precio máximo de Paris.")
-    print("\t 5. Precio máximo de Ripley.")
-    print("\t 6. Precio máximo de Linio.")
+    print("\t 1. Precio mínimo en una tienda.")
+    print("\t 2. Precio máximo en una tienda.")
+    print("\t 3. Precio mínimo entre las 3 tiendas.")
     print("\t13. Salir")
 
 def menu():
-    df = pd.read_csv("data.csv")
+    csvpath = os.getcwd() + os.path.sep + "data.csv"
+    df = pd.read_csv(csvpath, delimiter=',')
 
     while True:
         # Mostramos el menu
@@ -201,22 +199,13 @@ def menu():
 
         if opcion == 1:
             print("")
-            Funciones.minPrice(df, 'Paris')
+            print(Funciones.minPrice(df, Funciones.Tienda().capitalize()))
         elif opcion == 2:
             print("")
-            Funciones.minPrice(df, 'Ripley')
+            print(Funciones.maxPrice(df, Funciones.Tienda().capitalize()))
         elif opcion == 3:
             print("")
-            Funciones.minPrice(df, 'Linio')
-        elif opcion == 4:
-            print("")
-            Funciones.maxPrice(df, 'Paris')
-        elif opcion == 5:
-            print("")
-            Funciones.maxPrice(df, 'Ripley')
-        elif opcion == 6:
-            print("")
-            Funciones.maxPrice(df, 'Linio')
+            Funciones.minPriceAll(df)
         elif opcion == 13:
             break
         else:
