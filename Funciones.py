@@ -3,22 +3,38 @@ def Tienda():
     print("\t- Paris")
     print("\t- Ripley")
     print("\t- Linio")
-    return input("Introduce el nombre de la tienda: ")
+    return input("Introduce el nombre de la tienda: ").capitalize()
+
+def checkTienda(tienda):
+    if tienda in ['Paris', 'Ripley', 'Linio']:
+        return True
+    else: 
+        print("\nTienda introducida incorrecta.\nIntente de nuevo.")
+        return False
 
 def minPrice(df, tienda): 
-    return printPrice(df.iloc[df[df['page'] == tienda]['internetPrice'].idxmin(),[0,2]], tienda, "barato")
+    if checkTienda(tienda):
+        printPrice(df.iloc[df[df['page'] == tienda]['internetPrice'].idxmin(),[0,2]], tienda, "barato")
+    else:
+        return
 
 def maxPrice(df, tienda):
-    return printPrice(df.iloc[df[df['page'] == tienda]['internetPrice'].idxmin(),[0,2]], tienda, "caro")
+    if checkTienda(tienda):
+        printPrice(df.iloc[df[df['page'] == tienda]['internetPrice'].idxmax(),[0,2]], tienda, "caro")
+    else:
+        return
 
 def printPrice(df, tienda, tipo):
-    return "En "+tienda+" el producto Apple más "+tipo+" es "+str(df['name'])+' a un precio de '+str(df['internetPrice'])
+    print("\nEn "+tienda+" el producto Apple más "+tipo+" es "+str(df['name'])+' a un precio de '+str(df['internetPrice']))
 
 def minPriceAll(df): 
-    printMinPriceAll(df.iloc[df['internetPrice'].idxmin(),:])
+    printPriceAll(df.iloc[df['internetPrice'].idxmin(),:], 'barato')
 
-def printMinPriceAll(df):
-    print("El producto más barato está en " + str(df['page']) + ", y es un " + str(df['name']) + " a " + str(df['internetPrice']))
+def maxPriceAll(df): 
+    printPriceAll(df.iloc[df['internetPrice'].idxmax(),:], 'caro')
+
+def printPriceAll(df, tipo):
+    print("\nEl producto más "+tipo+" está en " + str(df['page']) + ", y es un " + str(df['name']) + " a " + str(df['internetPrice']))
 
 def tableMean(df, parameter):
     df = df.copy().dropna()
