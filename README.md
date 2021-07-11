@@ -9,9 +9,13 @@
 
 ## Descripción del proyecto
 
-Este es un comparador de precios que busca en Paris, Ripley y Linio por el precio de un item en común.
+Este es un comparador de precios de Smartphones Apple, que busca en Paris, Ripley y Linio por los precios.
 
 **IMPORTANTE**: Este proyecto utiliza Selenium con Chrome como el buscador. Hemos puesto los chromedrivers para cada OS en la carpeta, teniendo en cuenta que son para la versión 91. de Chrome.
+
+## Instrucciones
+
+Basta con ejecutar el Main.py en la terminal de su computador e interactuar con el programa. 
 
 ## Enunciado
 
