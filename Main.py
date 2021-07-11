@@ -187,6 +187,7 @@ def printMenu():
     print("\t 3. Precio mínimo entre las 3 tiendas.")
     print("\t 4. Precio máximo entre las 3 tiendas.")
     print("\t 5. Buscar el promedio de un tipo de precio")
+    print("\t 6. Buscar un producto.")
     print("\t13. Salir")
 
 def menu():
@@ -200,21 +201,19 @@ def menu():
         # Solicituamos una opción al usuario
         opcion = int(input("Ingrese su opción: "))
 
+        print("")
         if opcion == 1:
-            print("")
             Funciones.minPrice(df, Funciones.Tienda())
         elif opcion == 2:
-            print("")
             Funciones.maxPrice(df, Funciones.Tienda())
         elif opcion == 3:
-            print("")
             Funciones.minPriceAll(df)
         elif opcion == 4:
-            print("")
             Funciones.maxPriceAll(df)
         elif opcion == 5:
-            print("")
             Funciones.promedio(df)
+        elif opcion == 6:
+            Funciones.buscar(df)
         elif opcion == 13:
             break
         else:
@@ -226,5 +225,5 @@ def menu():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
     menu()

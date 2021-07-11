@@ -1,4 +1,5 @@
 # Implementamos un mínimo de 12 funciones para que mostrara lo que queríamos que mostrara.
+# 6 integrantes * 2 funciones = 12 como mínimo.
 
 def Tienda():
     print("En qué tienda quieres buscar:")
@@ -38,21 +39,12 @@ def maxPriceAll(df):
 def printPriceAll(df, tipo):
     print("\nEl producto más "+tipo+" está en " + str(df['page']) + ", y es un " + str(df['name']) + " a " + str(df['internetPrice']))
 
-def tableMean(df, parameter):
-    df = df.copy().dropna()
-    print("\nMean of the table: ", "{:.2f}".format(df[parameter].mean()))
-
-def search(df, product):
-    df['name'] = df['name'].str.lower()
-    return df[df['name'].str.contains(product)]
-
 def meanOption():
     print("\n¿Qué promedio desea?")
     print("\t1. Precio tienda")
     print("\t2. Precio internet")
     print("\t3. Precio tarjeta")
     return int(input("Seleccione precio: "))
-
 
 def storeOption():
     print("¿En qué tienda quiere buscar buscar?")
@@ -61,6 +53,30 @@ def storeOption():
     print("\t3. Linio")
     print("\t4. Todas")
     return int(input("Seleccione tienda: "))
+
+def tableMean(df, parameter):
+    df = df.copy().dropna()
+    print("\nMean of the table: ", "{:.2f}".format(df[parameter].mean()))
+
+def productName():
+    print("Introduzca nombre del producto: ")
+    return input()
+
+def search(df, product):
+    df['name'] = df['name'].str.lower()
+    print(df[df['name'].str.contains(product)])
+
+def buscar(df):
+    a = storeOption()
+    b = productName()
+    if a == 1:
+        search(df[df['page'] == 'Ripley'], b)
+    if a == 2:
+        search(df[df['page'] == 'Paris'], b)
+    if a == 3:
+        search(df[df['page'] == 'Linio'], b)
+    if a == 4:
+        search(df, b)
 
 def promedio(df):
     b = storeOption()
@@ -93,3 +109,5 @@ def promedio(df):
             tableMean(df, "internetPrice")
         if c == 3:
             tableMean(df, "cardPrice")
+
+

@@ -21,13 +21,13 @@ class Methods():
     def getPath(self):
         os_name = platform.system()
         if os_name == "Windows":
-            path = os.getcwd() + os.path.sep + "chromedriver.exe"
+            path = os.getcwd() + os.path.sep + "chromedriver_win.exe"
             return path
         if os_name == "Linux":
-            path = os.getcwd() + os.path.sep + "chromedriver"
+            path = os.getcwd() + os.path.sep + "chromedriver_linux"
             return path
         if os_name == "Darwin":
-            path = os.getcwd() + os.path.sep + "chromedriver"
+            path = os.getcwd() + os.path.sep + "chromedriver_mac"
             return path
 
     def csvOut(self, phones):
