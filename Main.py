@@ -3,6 +3,7 @@ import Methods as mt
 import pandas as pd
 import Funciones
 import os
+import numpy as np
 
 class Product(object):
     def __init__(self, name, storePrice, internetPrice, cardPrice, page):
@@ -48,7 +49,7 @@ class Ripley(Product):
                 storePrice = int(storePrice.text.replace(
                     "$", "").replace(".", ""))
             except:
-                storePrice = "Na"
+                storePrice = np.nan
 
             try:
                 internetPrice = prices[i].find_element_by_class_name(
@@ -56,7 +57,7 @@ class Ripley(Product):
                 internetPrice = int(
                     internetPrice.text.replace("$", "").replace(".", ""))
             except:
-                internetPrice = "Na"
+                internetPrice = np.nan
 
             try:
                 cardPrice = prices[i].find_element_by_class_name(
@@ -64,7 +65,7 @@ class Ripley(Product):
                 cardPrice = int(cardPrice.text.replace(
                     "$", "").replace(".", ""))
             except:
-                cardPrice = "Na"
+                cardPrice = np.nan
 
             phone = Product(name, storePrice, internetPrice,
                             cardPrice, "Ripley")
@@ -89,7 +90,7 @@ class Paris(Product):
                     "$", "").replace(".", ""))
 
             except:
-                storePrice = "Na"
+                storePrice = np.nan
 
             try:
                 temp = prices[i].find_element_by_class_name(
@@ -98,7 +99,7 @@ class Paris(Product):
                 internetPrice = int(
                     internetPrice.text.replace("$", "").replace(".", ""))
             except:
-                internetPrice = "Na"
+                internetPrice = np.nan
 
             try:
                 cardPrice = prices[i].find_element_by_class_name("price__text")
@@ -106,7 +107,7 @@ class Paris(Product):
                     "$", "").replace(".", ""))
 
             except:
-                cardPrice = "Na"
+                cardPrice = np.nan
 
             phone = Product(name, storePrice, internetPrice,
                             cardPrice, "Paris")
@@ -132,7 +133,7 @@ class Linio(Product):
                     "$", "").replace(".", ""))
 
             except:
-                storePrice = "Na"
+                storePrice = np.nan
 
             try:
                 internetPrice = prices[i].find_element_by_class_name(
@@ -140,7 +141,7 @@ class Linio(Product):
                 internetPrice = int(
                     internetPrice.text.replace("$", "").replace(".", ""))
             except:
-                internetPrice = "Na"
+                internetPrice = np.nan
 
             try:
                 cardPrice = prices[i].find_element_by_class_name(
@@ -149,7 +150,7 @@ class Linio(Product):
                     "$", "").replace(".", ""))
 
             except:
-                cardPrice = "Na"
+                cardPrice = np.nan
 
             phone = Product(name, storePrice, internetPrice,
                             cardPrice, "Linio")
@@ -185,6 +186,7 @@ def printMenu():
     print("\t 2. Precio máximo en una tienda.")
     print("\t 3. Precio mínimo entre las 3 tiendas.")
     print("\t 4. Precio máximo entre las 3 tiendas.")
+    print("\t 5. Buscar el promedio de un tipo de precio")
     print("\t13. Salir")
 
 def menu():
@@ -210,6 +212,9 @@ def menu():
         elif opcion == 4:
             print("")
             Funciones.maxPriceAll(df)
+        elif opcion == 5:
+            print("")
+            Funciones.promedio(df)
         elif opcion == 13:
             break
         else:
@@ -221,5 +226,5 @@ def menu():
 
 
 if __name__ == '__main__':
-    #main()
+    main()
     menu()

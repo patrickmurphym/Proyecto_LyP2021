@@ -1,3 +1,5 @@
+# Implementamos un mínimo de 12 funciones para que mostrara lo que queríamos que mostrara.
+
 def Tienda():
     print("En qué tienda quieres buscar:")
     print("\t- Paris")
@@ -38,8 +40,56 @@ def printPriceAll(df, tipo):
 
 def tableMean(df, parameter):
     df = df.copy().dropna()
-    print("Mean of the table: ", df[parameter].mean())
+    print("\nMean of the table: ", "{:.2f}".format(df[parameter].mean()))
 
 def search(df, product):
     df['name'] = df['name'].str.lower()
     return df[df['name'].str.contains(product)]
+
+def meanOption():
+    print("\n¿Qué promedio desea?")
+    print("\t1. Precio tienda")
+    print("\t2. Precio internet")
+    print("\t3. Precio tarjeta")
+    return int(input("Seleccione precio: "))
+
+
+def storeOption():
+    print("¿En qué tienda quiere buscar buscar?")
+    print("\t1. Ripley")
+    print("\t2. Paris")
+    print("\t3. Linio")
+    print("\t4. Todas")
+    return int(input("Seleccione tienda: "))
+
+def promedio(df):
+    b = storeOption()
+    c = meanOption()
+    if b == 1:
+        if c == 1:
+            tableMean(df[df['page'] == 'Ripley'], "storePrice")
+        if c == 2:
+            tableMean(df[df['page'] == 'Ripley'], "internetPrice")
+        if c == 3:
+            tableMean(df[df['page'] == 'Ripley'], "cardPrice")
+    if b == 2:
+        if c == 1:
+            tableMean(df[df['page'] == 'Paris'], "storePrice")
+        if c == 2:
+            tableMean(df[df['page'] == 'Paris'], "internetPrice")
+        if c == 3:
+            tableMean(df[df['page'] == 'Paris'], "cardPrice")
+    if b == 3:
+        if c == 1:
+            tableMean(df[df['page'] == 'Linio'], "storePrice")
+        if c == 2:
+            tableMean(df[df['page'] == 'Linio'], "internetPrice")
+        if c == 3:
+            tableMean(df[df['page'] == 'Linio'], "cardPrice")
+    if b == 4:
+        if c == 1:
+            tableMean(df, "storePrice")
+        if c == 2:
+            tableMean(df, "internetPrice")
+        if c == 3:
+            tableMean(df, "cardPrice")
