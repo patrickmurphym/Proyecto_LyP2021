@@ -11,6 +11,8 @@
 
 Este es un comparador de precios que busca en Paris, Ripley y Linio por el precio de un item en común.
 
+**IMPORTANTE**: Este proyecto utiliza Selenium con Chrome como el buscador. Hemos puesto los chromedrivers para cada OS en la carpeta, teniendo en cuenta que son para la versión 91. de Chrome.
+
 ## Enunciado
 
 El proyecto consiste en una aplicación que permita automatizar el proceso de extraer información/estadísticas de diferentes páginas web, utilizando 3 paradigmas diferentes.
