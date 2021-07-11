@@ -163,7 +163,7 @@ def main():
     options = mt.Methods().getOptions()
     path = mt.Methods().getPath()
     phones = []
-    driver = webdriver.Chrome(executable_path=(path), chrome_options=options)
+    driver = webdriver.Chrome(executable_path=(path), options=options)
     rpl.scrapper(driver, phones)
     prs.scrapper(driver, phones)
     lno.scrapper(driver, phones)

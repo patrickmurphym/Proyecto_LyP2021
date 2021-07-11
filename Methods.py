@@ -16,6 +16,7 @@ class Methods():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-setuid-sandbox")
         options.add_argument('--ignore-ssl-errors')
+        return options
 
     def getPath(self):
         os_name = platform.system()
