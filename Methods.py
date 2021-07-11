@@ -1,3 +1,5 @@
+# Este archivo tiene lo necesario para hacer el Webscrapping y guardar en un csv.
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
